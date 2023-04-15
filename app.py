@@ -20,11 +20,6 @@ characteristics = ['Radious Mean','Texture Mean','Perimeter Mean','Area Mean','S
 variables_independient = []
 values = []
 
-# def load_model():
-#     """
-#     load the trained model file
-#     """
-
 with open(MODEL_PATH, 'rb') as file:
     model = pickle.load(file)
 
