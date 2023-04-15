@@ -4,14 +4,18 @@ import numpy as np
 import pickle
 from sklearn.neural_network import MLPClassifier
 
+st.set_page_config(
+    page_title="Breast Cancer Prediction",
+    initial_sidebar_state="expanded"
+)
+
 MODEL_PATH = ('data/model.pkl')
 characteristics = ['Radious Mean','Texture Mean','Perimeter Mean','Area Mean','Smoothness Mean',
-            'Compactness Mean','Concavity Mean','Concave Points Mean','Simetry Mean',
-            'Fractal Dimension Mean','Radious SE','Texture SE','Perimeter SE','Area SE',
-            'smoothness SE','Compactness SE','Concavity SE','Concave Points SE','Simetry SE',
-            'Fractal Dimension SE','Radious Worst','Texture Worst','Perimeter Worst',
-            'Area Worst','Smoothness Worst','Compactness Worst','Concavity Worst',
-            'Concave Points Worst','Simetry Worst','Fractal Dimension Worst']
+            'Compactness Mean','Concavity Mean','Concave Points Mean','Simetry Mean','Fractal Dimension Mean',
+            'Radious SE','Texture SE','Perimeter SE','Area SE','smoothness SE',
+            'Compactness SE','Concavity SE','Concave Points SE','Simetry SE','Fractal Dimension SE',
+            'Radious Worst','Texture Worst','Perimeter Worst','Area Worst','Smoothness Worst',
+            'Compactness Worst','Concavity Worst','Concave Points Worst','Simetry Worst','Fractal Dimension Worst']
 
 variables_independient = []
 values = []
@@ -30,6 +34,7 @@ def variable_input(data):
         arg1(array):name of the independent variables
     """
     for name in data:
+        
         new_name = name.lower().replace(" ","_")
         number_input = st.number_input(f"{name}")
         variable_result = f"{new_name}={number_input}"
@@ -64,6 +69,7 @@ def pred_btn():
         if prediction[0] == 'B':
             # st.success(f"La prediccion para este caso es: {prediction[0]}")
             st.success("La prediccion para este caso es: Benigna")
+            st.balloons()
         else:
             st.success("La prediccion para este caso es: Maligna")
 def main():
